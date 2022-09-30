@@ -15,16 +15,16 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-secret_key = os.getenv("SECRET_KEY")
-if secret_key.startswith("postgres://"):
-    secret_key = secret_key.replace("postgres://", "postgresql://", 1)
+# secret_key = os.getenv("SECRET_KEY")
+# if secret_key.startswith("postgres://"):
+#     secret_key = secret_key.replace("postgres://", "postgresql://", 1)
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ##CONNECT TO DB
 uri = os.getenv("DATABASE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///blog.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
